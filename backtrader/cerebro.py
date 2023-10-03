@@ -1562,6 +1562,17 @@ class Cerebro(with_metaclass(MetaParams, object)):
                     dt0 = min((d for i, d in enumerate(dts)
                                if d is not None and i not in rsonly))
 
+                # Get index to minimum datetime
+                if onlyresample or noresample:
+                    dt0 = min((d for d in dts if d is not None))
+                else:
+                    dtstmp = {d for i, d in enumerate(dts)
+                              if d is not None and i not in rsonly}
+                    if len(dtstmp) == 0:
+                        dtstmp = {d for i, d in enumerate(dts)
+                                  if d is not None}
+                    dt0 = min(dtstmp)
+
                 dmaster = datas[dts.index(dt0)]  # and timemaster
                 self._dtmaster = dmaster.num2date(dt0)
                 self._udtmaster = num2date(dt0)
