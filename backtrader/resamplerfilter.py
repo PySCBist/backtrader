@@ -267,7 +267,7 @@ class _BaseResampler(with_metaclass(metabase.MetaParams, object)):
         if self._eoscheck(data):
             return True
 
-        if data.datetime[0] < self.bar.datetime + 0.001423:
+        if data.datetime[0] < self.bar.datetime + 0.001447:   # Добавлено примерно 2 мин 5 сек
             return False
 
         # Get time objects for the comparisons - in utc-like format
