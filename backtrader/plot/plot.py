@@ -818,6 +818,8 @@ class Plot_OldSync(with_metaclass(MetaParams, object)):
             a.set_yscale('log')
 
     def show(self):
+        mng = self.mpyplot.get_current_fig_manager()
+        mng.window.state('zoomed')
         self.mpyplot.show()
 
     def savefig(self, fig, filename, width=16, height=9, dpi=300, tight=True):
